@@ -1,16 +1,14 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'server:5000/',
+  baseURL: 'http://localhost:5000/',
   headers: {
-    // 'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': '*',
   },
 });
 
 export const getPokemons = async () => {
-  return axiosInstance.get('/pokemons', {
-    headers: { 'Access-Control-Allow-Origin': '*' },
-  });
+  return axiosInstance.get('/pokemons')
 };
 
 export const getPokemonById = (pokemon_id: string) => {

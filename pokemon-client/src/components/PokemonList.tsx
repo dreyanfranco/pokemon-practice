@@ -13,19 +13,12 @@ export const PokemonList = () => {
       setPokemonData(response.data);
       // console.log(response.data)
     });
-    // axios
-    //   .get('http://localhost:3000/pokemons/', {
-    //     // headers: { 'Access-Control-Allow-Origin': '*' },
-    //   })
-    //   .then((res) => {
-    //     setPokemonData(res.data);
-    //   });
   }, []);
 
   return (
     <>
       {pokemonData.length > 0 ? (
-        <div>
+        
           <Row>
             {pokemonData.map((pokemon: any) => {
               return (
@@ -33,7 +26,7 @@ export const PokemonList = () => {
               );
             })}
           </Row>
-        </div>
+        
       ) : (
         <div>No pokemon Found</div>
       )}

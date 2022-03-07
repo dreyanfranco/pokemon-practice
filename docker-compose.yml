@@ -10,9 +10,8 @@ services:
       - ./pokemon-client:/app
     working_dir: /app
     command: npm start
-    links:
-      - 'server:server'
-
+    # links:
+    #   - 'server:server'
   server:
     image: node:14-alpine
     ports:

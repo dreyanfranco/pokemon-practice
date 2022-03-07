@@ -6,13 +6,14 @@ import mongoose from 'mongoose';
 
 const app = express();
 const port = 5000;
-app.use(cors());
+// app.use(cors({ origin: '*' }));
+app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/pokemons', pokemonRouter);
 
-mongoose.connect('mongodb://data:27017/pokemons', () => {
+mongoose.connect('mongodb://localhost/pokemons', () => {
   console.log('connected to database')
 })
 

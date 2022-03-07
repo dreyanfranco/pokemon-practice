@@ -1,8 +1,6 @@
 import { Router } from 'express';
 import Pokemon from '../models/pokemon.model';
 import mongoose from 'mongoose';
-import { body, validationResult } from 'express-validator';
-
 
 export const pokemonRouter = Router();
 
@@ -17,11 +15,6 @@ pokemonRouter.get('', async (req, res) => {
   } finally {
     // se ejecuta todo y funciono
   }
-
-  // .then((response: any) => res.json(response))
-  // .catch((error:any) => res.status(500).json(error))
-  // const pokemons = [{ index: 1, name: 'test' }];
-  // console.log('test');
 });
 
 //get one pokemon by id
@@ -53,7 +46,6 @@ pokemonRouter.delete('/:pokemon_id', async (req, res) => {
 // edit a pokemon
 
 pokemonRouter.put('/:pokemon_id', async (req, res) => {
-
   try {
     const pokemonEditById = await Pokemon.findByIdAndUpdate(req.params.pokemon_id, req.body)
     return res.status(200).json(pokemonEditById)
@@ -70,14 +62,9 @@ pokemonRouter.post('', async (req, res) => {
   try {
     const newPokemon = await Pokemon.create(newPokemonData);
     return res.status(200).json(newPokemon)
-
   } catch (error) {
     res.status(500).json(error)
   }
-  // Pokemon
-  //   .create(req.body)
-  //   .then((response: any) => res.json(response))
-  //   .catch((error: any) => res.status(500).json(error))
 })
 
 
