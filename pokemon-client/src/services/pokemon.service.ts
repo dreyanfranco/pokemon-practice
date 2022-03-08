@@ -21,10 +21,10 @@ export const newPokemon = (pokemonData: any) => {
 
 export const deletePokemonById = (pokemon_id: string) => {
   return axiosInstance.delete(`/pokemons/${pokemon_id}`)
-}
+};
 
 export const editPokemonById = (pokemon_id: string) => {
   return axiosInstance.delete(`/pokemons/${pokemon_id}`)
-}
+};
 
 

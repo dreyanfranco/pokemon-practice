@@ -6,7 +6,7 @@ const { Title } = Typography;
 function App() {
   return (
     <div>
-      <Title>Pokemon List</Title>
+      <Title>Lista de Pokemon</Title>
       <div>
         <PokemonList />
       </div>

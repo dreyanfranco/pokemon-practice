@@ -1,37 +1,79 @@
+# version: '3'
+# services:
+#   client:
+#     image: node:14-alpine
+#     stdin_open: true
+#     ports:
+#       - 3000:3000
+#     networks:
+#       - pokemon-app
+#     volumes:
+#       - ./pokemon-client:/app
+#     working_dir: /app
+#     command: npm start
+#     # links:
+#     #   - 'server:server'
+#   server:
+#     image: node:14-alpine
+#     ports:
+#       - 5000:5000
+#     networks:
+#       - pokemon-app
+#     depends_on:
+#       - mongo
+#     volumes:
+#       - ./pokemon-server:/app
+#     working_dir: /app
+#     command: npm run server
+#     # links:
+#     #   - 'mongo:data'
+#   mongo:
+#     image: mongo
+#     ports:
+#       - 28017:27017
+#     networks:
+#       - pokemon-app
+#     volumes:
+#       - mongo-data:/data/db
+    
+# networks:
+#   pokemon-app:
+#     driver: bridge #default: allows talk to one another 
+# volumes:
+#   mongo-data:
+#     driver: local
+
+
 version: '3'
 services:
   client:
     image: node:14-alpine
+    stdin_open: true
     ports:
       - 3000:3000
-    networks:
-      - pokemon-app
     volumes:
       - ./pokemon-client:/app
     working_dir: /app
     command: npm start
-    # links:
-    #   - 'server:server'
+    
   server:
     image: node:14-alpine
     ports:
       - 5000:5000
-    networks:
-      - pokemon-app
+    depends_on:
+      - mongo
     volumes:
       - ./pokemon-server:/app
     working_dir: /app
     command: npm run server
-    links:
-      - 'mongo:data'
+
+  
   mongo:
     image: mongo
-    ports:
-      - 28017:27017
-    networks:
-      - pokemon-app
-    
-networks:
-  pokemon-app:
-    driver: bridge #default: allows talk to one another 
+    volumes:
+      - mongo-data:/data/db
+      # - ./data:/db -> crear directorio 
 
+volumes:
+  mongo-data:
+    driver: local
